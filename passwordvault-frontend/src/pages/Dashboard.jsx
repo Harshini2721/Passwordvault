@@ -28,7 +28,7 @@ const Dashboard = () => {
     try {
 
       const res = await axios.get(
-        "http://localhost:5000/get-passwords",
+        "https://passwordvault-h1fk.onrender.com/get-passwords",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -113,7 +113,7 @@ const Dashboard = () => {
     try {
 
       await axios.post(
-        "http://localhost:5000/add-password",
+        "https://passwordvault-h1fk.onrender.com/add-password",
         formData,
         {
           headers: {
@@ -146,7 +146,7 @@ const Dashboard = () => {
     try {
 
       await axios.delete(
-        `http://localhost:5000/delete-password/${id}`,
+        `https://passwordvault-h1fk.onrender.com/delete-password/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

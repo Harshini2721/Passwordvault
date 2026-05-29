@@ -22,7 +22,7 @@ function Register() {
     e.preventDefault();
 
     try {
-      await axios.post("http://localhost:5000/register", formData);
+      await axios.post("https://passwordvault-h1fk.onrender.com/register", formData);
 
       alert("Register Success");
 

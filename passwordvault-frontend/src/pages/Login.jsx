@@ -22,7 +22,7 @@ function Login() {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:5000/login", formData);
+      const res = await axios.post("https://passwordvault-h1fk.onrender.com/login", formData);
 
       localStorage.setItem("token", res.data.token);
 

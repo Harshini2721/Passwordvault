@@ -8,6 +8,7 @@ require("dotenv").config();
 
 const User = require("./models/User");
 const Password = require("./models/Password");
+const { encrypt, decrypt } = require("./utils/encrypt");
 
 const app = express();
 
@@ -162,7 +163,7 @@ app.post("/add-password", verifyToken, async (req, res) => {
       title,
       website,
       username,
-      password,
+      password: encrypt(password),
       userId: req.user.id
     });
 
@@ -189,7 +190,12 @@ app.get("/get-passwords", verifyToken, async (req, res) => {
       userId: req.user.id
     });
 
-    res.json(passwords);
+    const decryptedPasswords = passwords.map((p) => ({
+      ...p._doc,
+      password: decrypt(p.password)
+    }));
+
+    res.json(decryptedPasswords);
 
   } catch (err) {
 
